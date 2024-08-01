@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Clientes</title>
+    <script>
+        function toggleCamposPessoa() {
+            const pessoaFisica = document.getElementById('pessoaFisica').checked;
+            const pessoaJuridica = document.getElementById('pessoaJuridica').checked;
+
+            document.getElementById('cpf').disabled = !pessoaFisica;
+            document.getElementById('dataNascimento').disabled = !pessoaFisica;
+            document.getElementById('cnpj').disabled = !pessoaJuridica;
+        }
+
+        function validarCamposNumericos(event) {
+            const key = event.key;
+            if (!/^[0-9]+$/.test(key) && key !== 'Backspace') {
+                event.preventDefault();
+            }
+        }
+
+        function validarFormulario(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const pessoaFisica = document.getElementById('pessoaFisica').checked;
+            const cpf = document.getElementById('cpf').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const cnpj = document.getElementById('cnpj').value;
+            const endereco = document.getElementById('endereco').value;
+            const cep = document.getElementById('cep').value;
+            const telefone = document.getElementById('telefone').value;
+            const email = document.getElementById('email').value;
+            const mensagemErro = document.getElementById('mensagemErro');
+            
+            if (!nome || !endereco || !cep || !telefone || !email || (pessoaFisica && (!cpf || !dataNascimento)) || (!pessoaFisica && !cnpj)) {
+                mensagemErro.textContent = "Todos os campos obrigatórios devem ser preenchidos.";
+                return;
+            }
+
+            mensagemErro.textContent = "";
+            document.getElementById('formCadastro').submit();
+        }
+    </script>
+</head>
+<body>
+    <h2>Cadastro de Clientes</h2>
+    <form id="formCadastro" onsubmit="validarFormulario(event)">
+        <div>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome">
+        </div>
+        <div>
+            <label>Pessoa:</label>
+            <input type="radio" id="pessoaFisica" name="tipoPessoa" value="fisica" onclick="toggleCamposPessoa()"> Física
+            <input type="radio" id="pessoaJuridica" name="tipoPessoa" value="juridica" onclick="toggleCamposPessoa()"> Jurídica
+        </div>
+        <div>
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" disabled>
+        </div>
+        <div>
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="text" id="dataNascimento" name="dataNascimento" disabled onkeypress="validarCamposNumericos(event)">
+        </div>
+        <div>
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" disabled>
+        </div>
+        <div>
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco">
+        </div>
+        <div>
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" onkeypress="validarCamposNumericos(event)">
+        </div>
+        <div>
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <button type="submit">Cadastrar</button>
+        <p id="mensagemErro" style="color: red;"></p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault();
+
+            const login = document.getElementById('login').value;
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+            const mensagemErro = document.getElementById('mensagemErro');
+
+            if (!login || !senha || !confirmarSenha) {
+                mensagemErro.textContent = "Todos os campos devem ser preenchidos.";
+                return;
+            }
+
+            if (senha.length < 6 || senha.length > 10) {
+                mensagemErro.textContent = "A senha deve ter entre 6 e 10 caracteres.";
+                return;
+            }
+
+            if (senha !== confirmarSenha) {
+                mensagemErro.textContent = "Os campos 'senha' e 'confirmar senha' devem ser iguais.";
+                return;
+            }
+
+            mensagemErro.textContent = "";
+            document.getElementById('formCadastro').submit();
+        }
+    </script>
+</head>
+<body>
+    <h2>Cadastro de Usuário</h2>
+    <form id="formCadastro" onsubmit="validarFormulario(event)">
+        <div>
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login">
+        </div>
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha">
+        </div>
+        <div>
+            <label for="confirmarSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmarSenha" name="confirmarSenha">
+        </div>
+        <button type="submit">Cadastrar</button>
+        <p id="mensagemErro" style="color: red;"></p>
+    </form>
+</body>
+</html>

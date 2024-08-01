@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulação de Cores</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        function mudarCorFonte(cor) {
+            document.getElementById('meuParagrafo').style.color = cor;
+        }
+
+        function mudarCorFundo(cor) {
+            document.getElementById('meuParagrafo').style.backgroundColor = cor;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <p id="meuParagrafo">Este é o texto do meu parágrafo. Você pode mudar a cor da fonte e do fundo usando os botões abaixo.</p>
+        
+        <div class="buttons">
+            <button onclick="mudarCorFonte('white')">Fonte Branca</button>
+            <button onclick="mudarCorFonte('black')">Fonte Preta</button>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="mudarCorFundo('white')">Fundo Branco</button>
+            <button onclick="mudarCorFundo('black')">Fundo Preto</button>
+        </div>
+
+        <div class="buttons">
+            <button onclick="aumentarFonte()">+</button>
+            <button onclick="diminuirFonte()">-</button>
+        </div>
+        
+        <div class="buttons">
+            <button onclick="transformarMaiusculas()">MAIÚSCULAS</button>
+            <button onclick="transformarMinusculas()">minúsculas</button>
+        </div>
+    </div>
+</body>
+</html>

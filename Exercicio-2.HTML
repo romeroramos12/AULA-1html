@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocar Cor de Fundo</title>
+    <script>
+        function mudarCor(cor) {
+            document.body.style.backgroundColor = cor;
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Passe o mouse sobre uma cor:</h2>
+        <a href="#" onmouseover="mudarCor('red')" onmouseout="mudarCor('')">Vermelho</a><br>
+        <a href="#" onmouseover="mudarCor('green')" onmouseout="mudarCor('')">Verde</a><br>
+        <a href="#" onmouseover="mudarCor('blue')" onmouseout="mudarCor('')">Azul</a><br>
+        <a href="#" onmouseover="mudarCor('yellow')" onmouseout="mudarCor('')">Amarelo</a><br>
+    </div>
+</body>
+</html>

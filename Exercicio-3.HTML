@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trocar Cor de Fundo</title>
+    <script>
+        function mudarCor() {
+            const cores = document.getElementsByName('cor');
+            for (let i = 0; i < cores.length; i++) {
+                if (cores[i].checked) {
+                    document.body.style.backgroundColor = cores[i].value;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <h2>Escolha uma cor de fundo:</h2>
+        <input type="radio" id="vermelho" name="cor" value="red" onclick="mudarCor()">
+        <label for="vermelho">Vermelho</label><br>
+        <input type="radio" id="verde" name="cor" value="green" onclick="mudarCor()">
+        <label for="verde">Verde</label><br>
+        <input type="radio" id="azul" name="cor" value="blue" onclick="mudarCor()">
+        <label for="azul">Azul</label><br>
+        <input type="radio" id="amarelo" name="cor" value="yellow" onclick="mudarCor()">
+        <label for="amarelo">Amarelo</label><br>
+    </div>
+</body>
+</html>

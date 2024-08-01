@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Seleção de Itens</title>
+    <script>
+        function verificarCheckboxes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const botao = document.getElementById('botaoEnviar');
+            let count = 0;
+            
+            checkboxes.forEach((checkbox) => {
+                if (checkbox.checked) {
+                    count++;
+                }
+            });
+            
+            botao.disabled = count < 2;
+        }
+    </script>
+</head>
+<body>
+    <h2>Selecione pelo menos dois itens:</h2>
+    <form>
+        <label>
+            <input type="checkbox" name="item" value="item1" onclick="verificarCheckboxes()"> Item 1
+        </label><br>
+        <label>
+            <input type="checkbox" name="item" value="item2" onclick="verificarCheckboxes()"> Item 2
+        </label><br>
+        <label>
+            <input type="checkbox" name="item" value="item3" onclick="verificarCheckboxes()"> Item 3
+        </label><br>
+        <label>
+            <input type="checkbox" name="item" value="item4" onclick="verificarCheckboxes()"> Item 4
+        </label><br>
+        <label>
+            <input type="checkbox" name="item" value="item5" onclick="verificarCheckboxes()"> Item 5
+        </label><br>
+        <button type="submit" id="botaoEnviar" disabled>Enviar</button>
+    </form>
+</body>
+</html>
